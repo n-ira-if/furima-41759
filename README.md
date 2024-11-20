@@ -5,10 +5,10 @@
 |nickname          |string    |null: false                  |
 |email             |string    |null: false, unique: true    |
 |encrypted_password|string    |null: false                  |
-|first_name        |string    |全角文字のみ, null: false     |
-|last_name         |string    |全角文字のみ, null: false     |
-|first_name_kana   |string    |全角カタカナのみ, null: false  |
-|last_name_kana    |string    |全角カタカナのみ, null: false  |
+|first_name        |string    |null: false                  |
+|last_name         |string    |null: false                  |
+|first_name_kana   |string    |null: false                  |
+|last_name_kana    |string    |null: false                  |
 |birth_date        |date      |null: false                  |
 |-----------------------------------------------------------|
 
@@ -22,15 +22,15 @@ has_many :purchases
 
 |Column             |Type      |Options                       |
 |-------------------|----------|------------------------------|
-|name               |string    |null: false,40文字まで         |
-|concept            |text      |null: false, 1000文字まで      |
+|name               |string    |null: false,                  |
+|concept            |text      |null: false,                  |
 |category_id        |integer   |null: false                   |
 |situation_id       |integer   |null: false                   |
 |shippingfee_id     |integer   |null: false                   |
 |region_id          |integer   |null: false                   |
 |arrival_id         |integer   |null: false                   |
 |price              |integer   |null: false                   |
-|user               |reference |null: false, foreign_key: true|
+|user               |references|null: false, foreign_key: true|
 |-------------------------------------------------------------|
 
 
@@ -44,8 +44,8 @@ has_one :purchase
 
 |Column         |Type           |Options                       |
 |---------------|---------------|------------------------------|
-|user           |reference      |null: false, foreign_key: true|
-|item           |reference      |null: false, foreign_key: true|
+|user           |references     |null: false, foreign_key: true|
+|item           |references     |null: false, foreign_key: true|
 |--------------------------------------------------------------|
 
 
@@ -67,7 +67,7 @@ has_one    :destination
 |street_address   |string          |null: false                 |
 |building_name    |string          |                            |
 |telephone_number |string          |null: false                 |
-|purchase         |reference       |null: false                 |
+|purchase         |references      |null: false                 |
 |---------------------------------------------------------------|
 
 
