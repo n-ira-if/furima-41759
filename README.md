@@ -53,7 +53,7 @@ has_one :purchase
 ### Association
 belongs_to :user
 belongs_to :item
-has_one    :destinations
+has_one    :destination
 
 
 
@@ -62,7 +62,7 @@ has_one    :destinations
 |Column           |Type            |Options                     |
 |-----------------|----------------|----------------------------|
 |post_code        |string          |null: false                 |
-|prefectures_id   |integer         |null: false                 |
+|region_id        |integer         |null: false                 |
 |minicipalities   |string          |null: false                 |
 |street_address   |string          |null: false                 |
 |building_name    |string          |                            |
