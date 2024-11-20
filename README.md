@@ -22,8 +22,8 @@ has_many :purchases
 
 |Column             |Type      |Options                       |
 |-------------------|----------|------------------------------|
-|name               |string    |null: false,                  |
-|concept            |text      |null: false,                  |
+|name               |string    |null: false                   |
+|concept            |text      |null: false                   |
 |category_id        |integer   |null: false                   |
 |situation_id       |integer   |null: false                   |
 |shippingfee_id     |integer   |null: false                   |
