@@ -6,8 +6,8 @@ class User < ApplicationRecord
   
   validates :nickname, presence: true
 
-  VALID_PASSWORD_REGEX = /\A(?=.*[a-zA-Z])(?=.*[0-9]).{6,128}\z/
-  validates :password, format: { with: VALID_PASSWORD_REGEX,}, if: -> { password.present? }
+  VALID_PASSWORD_REGEX = /\A(?=.*[a-zA-Z])(?=.*[0-9]).*\z/
+  validates :password, format: { with: VALID_PASSWORD_REGEX}
 
   VALID_NAME_REGEX = /\A[ぁ-んァ-ヶ一-龠々ー]+\z/
   validates :first_name, presence: true, format: { with: VALID_NAME_REGEX}
