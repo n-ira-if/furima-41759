@@ -2,7 +2,10 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
-
+  validates :name, presence: true
+  validates :concept, presence: true
+  validates :image, presence: true
+  validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}, format: { with: /\A[0-9]+\z/}
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :situation
@@ -11,9 +14,9 @@ class Item < ApplicationRecord
   belongs_to :arrival
 
   
-  validates :category_id, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :situation_id, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :shippingfee_id, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :region_id, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :arrival_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :category_id, presence: true, numericality: { other_than: 1 }
+  validates :situation_id, presence: true, numericality: { other_than: 1 }
+  validates :shippingfee_id, presence: true, numericality: { other_than: 1 }
+  validates :region_id, presence: true, numericality: { other_than: 1 }
+  validates :arrival_id, presence: true, numericality: { other_than: 1 }
 end
