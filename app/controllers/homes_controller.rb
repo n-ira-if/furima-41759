@@ -1,5 +1,6 @@
 class HomesController < ApplicationController
-
+  before_action :authenticate_user!, only: [:new, :create]
+  
   def index
   end
   
@@ -12,7 +13,7 @@ class HomesController < ApplicationController
     if @item.save
       redirect_to '/'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
     
   end
