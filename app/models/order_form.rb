@@ -18,7 +18,7 @@ class OrderForm
 
     ActiveRecord::Base.transaction do
       purchase = Purchase.create(item_id: item_id, user_id: user_id, token: token)
-      Destination.create!(purchase_id: purchase.id, post_code: post_code, minicipalities: minicipalities, street_address: street_address, telephone_number: telephone_number, region_id: region_id, building_name: building_name)
+      Destination.create(purchase_id: purchase.id, post_code: post_code, minicipalities: minicipalities, street_address: street_address, telephone_number: telephone_number, region_id: region_id, building_name: building_name)
     end
   end
 end
