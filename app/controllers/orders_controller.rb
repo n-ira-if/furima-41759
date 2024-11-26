@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
 
   def create
     @order_form = OrderForm.new(order_form_params)
-    if @order_form.varid?
+    if @order_form.valid?
       pay_item
       @order_form.save
       redirect_to root_path
@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
   private
 
   def order_form_params
-    params.require(:order_form).permit(:post_code, :minicipalities, :street_address, :telephone_number, :item_id, :region_id, :building_name).merge(token: params[:token], user: user_id)
+    params.require(:order_form).permit(:post_code, :minicipalities, :street_address, :telephone_number, :item_id, :region_id, :building_name).merge(token: params[:token], user_id: current_user.id, item_id: @item.id)
   end
 
   def pay_item
