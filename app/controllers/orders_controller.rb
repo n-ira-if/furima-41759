@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_item, only: [:index, :create]
+  before_action :user_certification, only: [:index, :create]
 
   def index
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
@@ -16,6 +18,7 @@ class OrdersController < ApplicationController
       end
       redirect_to root_path
     else
+      gon.public_key = ENV['PAYJP_PUBLIC_KEY']
       render :index
     end
   end
@@ -51,4 +54,9 @@ class OrdersController < ApplicationController
    @item = Item.find(params[:item_id])
   end
 
+  def user_certification
+    if @item.user_id == current_user.id || Purchase.exists?(item_id: @item.id)
+      redirect_to root_path
+    end
+  end
 end
