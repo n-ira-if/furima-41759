@@ -12,10 +12,7 @@ class OrdersController < ApplicationController
     @order_form = OrderForm.new(order_form_params)
     if @order_form.valid?
       pay_item
-      ActiveRecord::Base.transaction do
-        purchase = Purchase.create(purchase_params)
-        Destination.create(destination_params.merge(purchase_id: purchase.id))
-      end
+      @order_form.save
       redirect_to root_path
     else
       gon.public_key = ENV['PAYJP_PUBLIC_KEY']
