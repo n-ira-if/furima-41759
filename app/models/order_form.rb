@@ -3,10 +3,10 @@ class OrderForm
   attr_accessor :token, :post_code, :minicipalities, :street_address, :telephone_number, :purchase, :user_id, :item_id, :region_id, :building_name
 
   with_options presence: true do
-    validates :post_code
+    validates :post_code, format: { with: /\A\d{3}-\d{4}\z/ }
     validates :minicipalities
     validates :street_address
-    validates :telephone_number
+    validates :telephone_number, format: { with: /\A\d{10,11}\z/ }
     validates :token
     validates :user_id
     validates :item_id
